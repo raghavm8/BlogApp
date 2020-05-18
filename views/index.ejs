@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BLOGS</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+        <style>
+        </style>
+    </head>
+    <body>
+        <div class="ui fixed inverted menu">
+            <div class="container ui">
+                <div class="header item">
+                    <i class="code icon" id="raghav"></i>
+                    Blog Site
+                </div>
+                <a href="/" class="item">Home</a>
+                <a href="/blogs/new" class="item">New Post</a>
+            </div>
+        </div><br/><br/><br/>
+        <div class="ui main text container">
+            <div class="ui top attached segment">
+                <div class="ui huge header">
+                    Blog  App
+                </div>
+                <div class="ui divided items">
+                    <% blogs.forEach(function(blog){ %>
+                        <div class="item">
+                            <div class="image">
+                                <img src="<%= blog.image %>">
+                            </div>
+                            <div class="content">
+                                <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                                <div class="meta">
+                                    <span>
+                                        <%= blog.created.toDateString() %>
+                                    </span>
+                                </div>
+                                <div class="description">
+                                    <p><%= blog.body.substring(0,50) %>....</p>
+                                </div>
+                                <div class="extra">
+                                    <a class="ui floated basic orange button" href="/blogs/<%= blog._id %>">Read More</a>
+                                </div>
+                            </div>               
+                        </div>
+                    <%}) %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
